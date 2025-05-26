@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Precios de Vehículos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="calculadora.css" />
+  </head>
+
+  <body>
+    <div id="error-container" class="error-message"></div>
+    <div id="success-container" class="success-message"></div>
+
+    <div class="container">
+      <h1><i class="fas fa-car"></i> Calculadora de Precios de Vehículos</h1>
+
+      <form id="vehiculoForm">
+        <div class="form-group">
+          <label for="cliente"
+            ><i class="fas fa-user"></i> Nombre del Cliente:</label
+          >
+          <input
+            type="text"
+            id="cliente"
+            placeholder="Ingrese el nombre del cliente"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="vehiculo"
+            ><i class="fas fa-car-side"></i> Seleccione el Vehículo:</label
+          >
+          <select id="vehiculo" required>
+            <option value="">-- Seleccione un vehículo --</option>
+            <option value="Toyota Corolla">Toyota Corolla</option>
+            <option value="Honda Civic">Honda Civic</option>
+            <option value="Ford Mustang">Ford Mustang</option>
+            <option value="Chevrolet Camaro">Chevrolet Camaro</option>
+            <option value="Toyota Camry">Toyota Camry</option>
+            <option value="Nissan Altima">Nissan Altima</option>
+            <option value="BMW Serie 3">BMW Serie 3</option>
+            <option value="Audi A4">Audi A4</option>
+            <option value="Tesla Model 3">Tesla Model 3</option>
+            <option value="Volkswagen Golf">Volkswagen Golf</option>
+            <option value="Mercedes-Benz Clase C">Mercedes-Benz Clase C</option>
+            <option value="Mazda CX-5">Mazda CX-5</option>
+            <option value="Subaru Outback">Subaru Outback</option>
+            <option value="Jeep Wrangler">Jeep Wrangler</option>
+            <option value="Hyundai Elantra">Hyundai Elantra</option>
+            <option value="Kia Forte">Kia Forte</option>
+            <option value="Ford F-150">Ford F-150</option>
+            <option value="Chevrolet Silverado">Chevrolet Silverado</option>
+            <option value="Ram 1500">Ram 1500</option>
+            <option value="Tesla Model Y">Tesla Model Y</option>
+            <option value="Porsche 911">Porsche 911</option>
+            <option value="Lexus ES">Lexus ES</option>
+            <option value="Acura TLX">Acura TLX</option>
+            <option value="Infiniti Q50">Infiniti Q50</option>
+            <option value="Genesis G90">Genesis G90</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="precio"
+            ><i class="fas fa-tag"></i> Precio del Vehículo ($):</label
+          >
+          <input
+            type="number"
+            id="precio"
+            min="0"
+            step="1000"
+            placeholder="Ingrese el precio del vehículo"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="aplicarIVA" />
+            <i class="fa-solid fa-wallet"></i> Aplicar IVA (15%)
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="aplicarSeguro" />
+            <i class="fa-solid fa-shield-halved"></i> Añadir Seguro ($1,200)
+          </label>
+        </div>
+        <button type="button" id="calcularBtn">
+          <i class="fas fa-calculator"></i> Calcular Precio Final
+        </button>
+        <button type="button" id="resetBtn">
+          <i class="fas fa-redo"></i> Reiniciar
+        </button>
+      </form>
+
+      <div id="resultado" class="resultado" style="display: none">
+        <h2>
+          <i class="fas fa-file-invoice-dollar"></i> Resultado del Cálculo:
+        </h2>
+        <p><span>Cliente:</span> <span id="resultadoCliente"></span></p>
+        <p><span>Vehículo:</span> <span id="resultadoVehiculo"></span></p>
+        <p>
+          <span>Precio Base Original:</span>
+          <span id="resultadoPrecioOriginal"></span>
+        </p>
+        <p>
+          <span>Descuento Aplicado (15%):</span>
+          <span id="resultadoDescuento"></span>
+        </p>
+        <p>
+          <span>Precio Base (con descuento):</span>
+          <span id="resultadoPrecioBase"></span>
+        </p>
+        <p><span>IVA (15%):</span> <span id="resultadoIVA"></span></p>
+        <p><span>Seguro:</span> <span id="resultadoSeguro"></span></p>
+        <div id="resultadoPrecioFinal"></div>
+      </div>
+
+      <div class="steps" id="guideSection">
+        <h2>
+          <i class="fas fa-lightbulb"></i> ¿Cómo Funciona Esta Página web?
+        </h2>
+        <ol>
+          <li>
+            Creamos un formulario HTML con campos para ingresar datos del
+            cliente y vehículo.
+          </li>
+          <li>
+            Aplicamos estilos CSS modernos con gradientes, sombras y
+            transiciones para mejorar la apariencia.
+          </li>
+          <li>
+            Usamos JavaScript para capturar los datos del formulario y realizar
+            cálculos financieros.
+          </li>
+          <li>
+            Si el precio es mayor a $50,000, aplicamos automáticamente un
+            descuento del 15%.
+          </li>
+          <li>
+            Si se marca la casilla de IVA, sumamos un 15% al precio (después de
+            descuentos).
+          </li>
+          <li>
+            Si se marca la casilla de Seguro, sumamos $1,200 al precio final.
+          </li>
+          <li>
+            Mostramos el resultado con animaciones y formato profesional para
+            mejor legibilidad.
+          </li>
+          <li>
+            Implementamos validación de datos y mensajes de error claros para el
+            usuario.
+          </li>
+          <li>
+            Agregamos validación visual con colores de error en los campos que
+            faltan por completar.
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Botón de guía flotante fuera del contenedor -->
+    <button id="showGuideBtn" title="Mostrar Guía">
+      <i class="fas fa-book-open"></i>
+    </button>
+
+    <script src="calculadora.js"></script>
+  </body>
+</html>

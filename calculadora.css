@@ -1,0 +1,403 @@
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f0f8ff, #e6f2ff);
+  padding: 20px;
+  position: relative;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 850px;
+  margin: 30px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.container:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  color: #6f2a79;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ba65c7, #6ab2c4);
+  border-radius: 2px;
+}
+
+/* Estilos del formulario */
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #000000;
+  font-size: 1rem;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #6f2a79;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(186, 101, 199, 0.2);
+  background-color: white;
+}
+
+/* Estilos para campos con error */
+.error-field {
+  border-color: #dc3545 !important;
+  background-color: #fff5f5 !important;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2) !important;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.3);
+  accent-color: #91469d;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.checkbox-label:hover {
+  color: #680078;
+}
+
+button {
+  background: linear-gradient(135deg, #ba65c7, #df82eeb6);
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-top: 25px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #a54fb1, #26a69a);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Estilos del área de resultados */
+.resultado {
+  margin-top: 35px;
+  padding: 25px;
+  background: linear-gradient(to right, #f8faff, #e6f7ff);
+  border-radius: 10px;
+  border-left: 5px solid #ba65c7;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  opacity: 1;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resultado h2 {
+  color: #ba65c7;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resultado h2 i {
+  font-size: 1.3rem;
+}
+
+.resultado p {
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  color: #555;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.resultado p:last-child {
+  border-bottom: none;
+}
+
+.resultado span {
+  font-weight: 600;
+  color: #333;
+}
+
+#resultadoPrecioFinal {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ba65c7;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  animation: pulse 1.5s infinite;
+  border-bottom: none !important;
+  display: block !important;
+  border: 3px solid #ba65c7;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Estilos para la sección explicativa */
+.steps {
+  margin-top: 30px;
+  background: linear-gradient(to right, #f8f8ff, #f0f5ff);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.steps h2 {
+  margin-bottom: 20px;
+  color: #ba65c7;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+}
+
+.steps h2 i {
+  color: #ffcc00;
+}
+
+.steps ol {
+  padding-left: 25px;
+}
+
+.steps li {
+  margin-bottom: 12px;
+  color: #555;
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.steps li::marker {
+  color: #ba65c7;
+  font-weight: bold;
+}
+
+/* Estilos para el botón de reinicio */
+#resetBtn {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#resetBtn:hover {
+  background: linear-gradient(135deg, #5a6268, #495057);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para el contenedor de mensajes de error */
+.error-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid #f5c6cb;
+  display: none;
+  z-index: 1000;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.3s ease;
+  max-width: 90%;
+}
+
+.success-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #d4edda;
+  color: #155724;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid #c3e6cb;
+  display: none;
+  z-index: 1000;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.3s ease;
+  max-width: 90%;
+}
+
+@keyframes slideDown {
+  from {
+    top: -50px;
+    opacity: 0;
+  }
+  to {
+    top: 20px;
+    opacity: 1;
+  }
+}
+
+.error-message i,
+.success-message i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+/* Estilos para el botón de mostrar guía*/
+#showGuideBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #26a69a, #138496);
+  color: white;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  font-size: 20px;
+}
+
+#showGuideBtn:hover {
+  background: linear-gradient(135deg, #ba65c7, #117a8b);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+#showGuideBtn:active {
+  transform: scale(0.95);
+}
+
+/* Efectos para los campos del formulario */
+.form-group:hover label {
+  color: #853691;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    margin: 15px auto;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  button {
+    padding: 14px 20px;
+  }
+  #showGuideBtn {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+  }
+}
+
+/* Estilo para el select personalizado */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 15px;
+  padding-right: 40px;
+}
